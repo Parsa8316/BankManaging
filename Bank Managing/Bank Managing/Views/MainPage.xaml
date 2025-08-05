@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Bank_Managing.Views.MainPage"
+             xmlns:models="clr-namespace:Bank_Managing.Models"
+             Title="لیست پیامک ها"
+             FlowDirection="RightToLeft"
+             Shell.NavBarIsVisible="False">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout HeightRequest="55">
+                <Frame BackgroundColor="#2E74FF" CornerRadius="0" Padding="10" VerticalOptions="FillAndExpand" HasShadow="True">
+                    <Label Text="لیست پیامک ها" FontSize="20" TextColor="White" FontAttributes="Bold" VerticalOptions="Center"/>
+                </Frame>
+            </StackLayout>
+            <StackLayout Padding="5">
+                <Grid ColumnDefinitions="*,*">
+                    <Button Grid.Column="0" Text="بانک ها" Clicked="Button_Clicked" BackgroundColor="#78A5FF" FontSize="16"/>
+                    <Button Grid.Column="1" Text="فیلتر" Clicked="Button_Clicked_1" BackgroundColor="#78A5FF" FontSize="16"/>
+                </Grid>
+                <ListView x:Name="MainListView" HasUnevenRows="true" ItemTapped="MainListView_ItemTapped" ItemSelected="MainListView_ItemSelected" SeparatorColor="#78A5FF">
+                    <ListView.Header>
+                        <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto" Padding="10">
+                            <Label x:Name="LblIncome" Grid.Column="0" Grid.Row="0"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Start" TextColor="Black" FontSize="16"/>
+                            <Label Text="درآمد:" Grid.Column="1" Grid.Row="0"
+                                   VerticalOptions="Center" TextColor="Black" FontSize="16"/>
+                            <Label x:Name="LblOutcome" Grid.Column="0" Grid.Row="1"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Start" TextColor="Black" FontSize="16"/>
+                            <Label Text="خرجی:" Grid.Column="1" Grid.Row="1"
+                                   VerticalOptions="Center" TextColor="Black" FontSize="16"/>
+                            <Label x:Name="LblBalance" Grid.Column="0" Grid.Row="2"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Start" TextColor="Black" FontSize="16"/>
+                            <Label Text="موجودی:" Grid.Column="1" Grid.Row="2"
+                                   VerticalOptions="Center" TextColor="Black" FontSize="16"/>
+                        </Grid>
+                    </ListView.Header>
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="models:BankData">
+                            <ViewCell>
+                                <StackLayout>
+                                    <Grid ColumnDefinitions="*,*" Padding="10" FlowDirection="LeftToRight">
+                                        <Label Text="{Binding Price}" Grid.Column="0"
+                                               VerticalOptions="Center"
+                                               HorizontalOptions="Start">
+                                            <Label.Triggers>
+                                                <DataTrigger TargetType="Label" Binding="{Binding IsIncome}" Value="True">
+                                                    <Setter Property="TextColor" Value="Green" />
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="Label" Binding="{Binding IsOutcome}" Value="True">
+                                                    <Setter Property="TextColor" Value="Red" />
+                                                </DataTrigger>
+                                            </Label.Triggers>
+                                        </Label>
+                                        <Label Text="{Binding Type}" Grid.Column="1"
+                                               VerticalOptions="Center"
+                                               HorizontalOptions="End">
+                                            <Label.Triggers>
+                                                <DataTrigger TargetType="Label" Binding="{Binding IsIncome}" Value="True">
+                                                    <Setter Property="TextColor" Value="Green" />
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="Label" Binding="{Binding IsOutcome}" Value="True">
+                                                    <Setter Property="TextColor" Value="Red" />
+                                                </DataTrigger>
+                                            </Label.Triggers>
+                                        </Label>
+                                    </Grid>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <!--<ListView.Triggers>
+                    <Trigger TargetType="ListView" Property="ta"
+                    </ListView.Triggers>-->
+                </ListView>
+
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Bank_Managing.Views.FilterPage"
+             xmlns:sdp="clr-namespace:ShamsiDatePicker;assembly=ShamsiDatePicker"
+             Shell.NavBarIsVisible="False">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout HeightRequest="55">
+                <Frame BackgroundColor="#2E74FF" CornerRadius="0" Padding="10" VerticalOptions="FillAndExpand" HasShadow="True">
+                    <!--<Grid ColumnDefinitions="*,*" Padding="0">
+                    <Label Text="بانک ها" FontSize="20" TextColor="White" VerticalOptions="Center"/>
+                    <Button Grid.Column="1" Text="⭠" HorizontalOptions="End" BackgroundColor="Transparent" TextColor="White" Clicked="Button_Clicked"/>
+                    </Grid>-->
+                    <Grid ColumnDefinitions="Auto, *">
+                        <ImageButton Source="back.png"
+                                     BackgroundColor="Transparent"
+                                     Clicked="Button_Clicked_1"
+                                     WidthRequest="50"
+                                     HeightRequest="50"
+                                     HorizontalOptions="Start"
+                                     VerticalOptions="Center"/>
+
+                        <Label Grid.Column="1"
+                               Text="فیلتر پیامک ها"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               HorizontalOptions="End"
+                               VerticalOptions="Center"
+                               TextColor="White"/>
+                    </Grid>
+                </Frame>
+            </StackLayout>
+            <StackLayout FlowDirection="RightToLeft">
+                <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,*,Auto" Padding="5" RowSpacing="8">
+                    <Frame Grid.Row="0" BackgroundColor="#E6EEFF" HasShadow="True" Padding="5">
+                        <Grid ColumnDefinitions="*,*,*">
+                            <Label Grid.Column="0" FontSize="16" TextColor="Black" Text="دریافتی؟" VerticalOptions="Center"/>
+                            <CheckBox x:Name="RdIncome" Grid.Column="0" CheckedChanged="RdIncome_CheckedChanged" IsChecked="False"/>
+
+                            <Label Grid.Column="1" Text="خرجی؟" TextColor="Black" FontSize="16" VerticalOptions="Center"/>
+                            <CheckBox x:Name="RdOutcome" Grid.Column="1" CheckedChanged="RdOutcome_CheckedChanged" IsChecked="False"/>
+
+                            <Label Grid.Column="2" Text="غیره؟" TextColor="Black" FontSize="16" VerticalOptions="Center"/>
+                            <CheckBox x:Name="RdNone" Grid.Column="2" CheckedChanged="RdNone_CheckedChanged" IsChecked="False"/>
+                        </Grid>
+                    </Frame>
+
+                    <Frame Grid.Row="1" BackgroundColor="#E6EEFF" HasShadow="True" Padding="5">
+                        <StackLayout>
+
+                            <StackLayout Orientation="Horizontal">
+                                <Label FontSize="16" TextColor="Black" Text="نوع پیام:" Visual="Material"/>
+                            </StackLayout>
+                            <FlexLayout
+                                Direction="Row"
+                                Wrap="Wrap"
+                                AlignItems="Center"
+                                FlowDirection="LeftToRight"
+                                JustifyContent="End"
+                                Margin="0"
+                                HeightRequest="140"
+                                BindableLayout.ItemsSource="{Binding MessageTypes}"
+                                AlignContent="Start">
+
+                                <StackLayout Orientation="Horizontal" Padding="15,0,0,5">
+                                    <CheckBox x:Name="RdOnBox" VerticalOptions="Center" IsChecked="True"/>
+                                    <Label x:Name="TxtOnBox" FontSize="16" TextColor="Black" Text="آن باکس" VerticalTextAlignment="Center" />
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal" Padding="15,0,0,5">
+                                    <CheckBox x:Name="RdMoneyIn" VerticalOptions="Center" IsChecked="True"/>
+                                    <Label x:Name="TxtMoneyIn" FontSize="16" TextColor="Black" Text="واریز پول" VerticalTextAlignment="Center" />
+                                </StackLayout>
+
+
+                                <StackLayout Orientation="Horizontal" Padding="15,0,0,5">
+                                    <CheckBox x:Name="RdProfit" VerticalOptions="Center" IsChecked="True"/>
+                                    <Label x:Name="TxtProfit" FontSize="16" TextColor="Black" Text="سود شما" VerticalTextAlignment="Center" />
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal" Padding="15,0,0,5">
+                                    <CheckBox x:Name="RdMoneyOut" VerticalOptions="Center" IsChecked="True"/>
+                                    <Label x:Name="TxtMoneyOut" FontSize="16" TextColor="Black" Text="برداشت پول" VerticalTextAlignment="Center" />
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal" Padding="15,0,0,5">
+                                    <CheckBox x:Name="RdInBox" VerticalOptions="Center" IsChecked="True"/>
+                                    <Label x:Name="TxtInBox" FontSize="16" TextColor="Black" Text="این باکس" VerticalTextAlignment="Center" />
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal" Padding="15,0,0,5">
+                                    <CheckBox x:Name="RdPayBill" VerticalOptions="Center" IsChecked="True"/>
+                                    <Label x:Name="TxtPayBill" FontSize="16" TextColor="Black" Text="پرداخت قبض" VerticalTextAlignment="Center" />
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal" Padding="15,0,0,5">
+                                    <CheckBox x:Name="RdSimCharged" VerticalOptions="Center" IsChecked="True"/>
+                                    <Label x:Name="TxtSimCharged" FontSize="16" TextColor="Black" Text="شارژ شدی" VerticalTextAlignment="Center" />
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal" Padding="15,0,0,5">
+                                    <CheckBox x:Name="RdNetBought" VerticalOptions="Center" IsChecked="True"/>
+                                    <Label x:Name="TxtNetBought" FontSize="16" TextColor="Black" Text="آنلاین شدی!" VerticalTextAlignment="Center" />
+                                </StackLayout>
+                            </FlexLayout>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame Grid.Row="2" BackgroundColor="#E6EEFF" HasShadow="True" Padding="5">
+                        <StackLayout>
+
+                            <StackLayout Orientation="Horizontal">
+                                <Label x:Name="TxtBanks" Text="بانک:" TextColor="Black" FontSize="16"/>
+                            </StackLayout>
+
+                            <FlexLayout
+                                x:Name="BanksLayout"
+                                Direction="Row"
+                                Wrap="Wrap"
+                                AlignItems="Center"
+                                JustifyContent="End"
+                                Margin="0"
+                                HeightRequest="125"
+                                BindableLayout.ItemsSource="{Binding MessageTypes}"
+                                AlignContent="Start"
+                                FlowDirection="RightToLeft">
+
+                            </FlexLayout>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Row="3" BackgroundColor="#E6EEFF" HasShadow="True" Padding="5">
+                        <Grid ColumnDefinitions="*,*">
+                            <Entry x:Name="TxtMinPrice" Grid.Column="0" TextColor="Black" Placeholder="حداقل مبلغ..."/>
+                            <Entry x:Name="TxtMaxPrice" Grid.Column="1" TextColor="Black" Placeholder="حداکثر مبلغ..."/>
+                        </Grid>
+                    </Frame>
+                    <Frame Grid.Row="4" BackgroundColor="#E6EEFF" HasShadow="True" Padding="5">
+                        <Grid ColumnDefinitions="*,*">
+                            <Entry x:Name="TxtMinBalance" Grid.Column="0" TextColor="Black" Placeholder="حداقل موجودی..."/>
+                            <Entry x:Name="TxtMaxBalance" Grid.Column="1" TextColor="Black" Placeholder="حداکثر موجودی..."/>
+                        </Grid>
+                    </Frame>
+                    <Frame Grid.Row="5" BackgroundColor="#E6EEFF" HasShadow="True" Padding="5">
+                        <Grid ColumnDefinitions="*,*" Padding="10">
+                            <Label Grid.Column="0" TextColor="Black" Text="از:" FontSize="14"/>
+                            <Label Grid.Column="1" TextColor="Black" Text="تا:" FontSize="14"/>
+                            <sdp:ShamsiDatePicker x:Name="TxtFromDate" Grid.Column="0" Date="{Binding TargetDate, Mode=TwoWay}" />
+                            <sdp:ShamsiDatePicker x:Name="TxtToDate" Grid.Column="1" Date="{Binding TargetDate, Mode=TwoWay}" />
+                        </Grid>
+                    </Frame>
+                    <Frame Grid.Row="6" BackgroundColor="#E6EEFF" HasShadow="True" Padding="5">
+                        <Entry x:Name="TxtDescription" Placeholder="توضیحات..." HeightRequest="60"/>
+                    </Frame>
+
+                    <Button Grid.Row="7" Text="فیلتر" BackgroundColor="#78A5FF" FontSize="16" Clicked="Button_Clicked" CornerRadius="5"/>
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

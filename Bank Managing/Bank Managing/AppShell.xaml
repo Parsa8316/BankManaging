@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       x:Class="Bank_Managing.AppShell"
+       xmlns:local="clr-namespace:Bank_Managing.Views"
+       Title="Bank_Managing"
+       BackgroundColor="#2E74FF"
+       Shell.NavBarHasShadow="False"
+       Shell.TabBarIsVisible="False"
+       Shell.FlyoutBehavior="Disabled">
+
+
+    <ShellItem Route="MainPage">
+        <ShellContent ContentTemplate="{DataTemplate local:MainPage}"/>
+    </ShellItem>
+
+    <!--<FlyoutItem Title="Equipment" Icon="icon_about.png" Route="EquipmentPage">
+    <Tab Title="tab 1">
+    <ShellContent Title="tab1" Route="EquipmentPage" ContentTemplate="{DataTemplate local:LoginPage}" />
+    <ShellContent Title="tab2" Route="EquipmentPage" ContentTemplate="{DataTemplate local:AddPage}" />
+    </Tab>
+    <Tab Title="tab 2">
+    <ShellContent Title="tab2" Route="EquipmentPage" ContentTemplate="{DataTemplate local:AddPage}" />
+
+    </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Add" Icon="icon_about.png">
+    <ShellContent Route="AddPage" ContentTemplate="{DataTemplate local:AddPage}" />
+    </FlyoutItem>-->
+
+</Shell>

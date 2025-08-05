@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+		<ProduceReferenceAssemblyInOutDir>true</ProduceReferenceAssemblyInOutDir>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DebugType>portable</DebugType>
+		<DebugSymbols>true</DebugSymbols>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="PersianDateTime.Core" Version="2.0.5" />
+		<PackageReference Include="Plugin.LocalNotification" Version="9.2.0" />
+		<PackageReference Include="ShamsiDatePicker" Version="2.1.239" />
+		<PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
+		<PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Reference Include="Mono.Android">
+			<HintPath>..\..\..\..\..\..\..\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\MonoAndroid\v13.0\Mono.Android.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Update="AppShell.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\FilterPage.xaml">
+		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\MainPage.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\SettingPage.xaml">
+		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+	</ItemGroup>
+</Project>

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Bank_Managing.Views.SettingPage"
+             Shell.NavBarIsVisible="False">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout HeightRequest="67">
+                <Frame BackgroundColor="#2E74FF" CornerRadius="0" Padding="10" VerticalOptions="FillAndExpand" HasShadow="True">
+                    <Grid ColumnDefinitions="Auto, *">
+                        <ImageButton Source="back.png"
+                                     BackgroundColor="Transparent"
+                                     Clicked="Button_Clicked"
+                                     WidthRequest="50"
+                                     HeightRequest="50"
+                                     HorizontalOptions="Start"
+                                     VerticalOptions="Center"/>
+
+                        <Label Grid.Column="1"
+                               Text="بانک ها"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               HorizontalOptions="End"
+                               VerticalOptions="Center"
+                               TextColor="White"/>
+                    </Grid>
+                </Frame>
+            </StackLayout>
+            <StackLayout Padding="10">
+                <Entry x:Name="SenderEntry" Placeholder="شماره یا نام فرستنده پیامک..." FontSize="18"/>
+                <Button BackgroundColor="#78A5FF" Text="افزودن بانک" Clicked="OnSaveClicked" FontSize="16"/>
+                <ListView x:Name="MainListView" HasUnevenRows="True" SeparatorVisibility="Default" SeparatorColor="Black">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="x:String">
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal" Padding="5">
+                                    <Label Text="{Binding .}" VerticalOptions="Center" TextColor="Black"/>
+                                    <Button Text="حذف" BackgroundColor="Transparent" TextColor="Red" Clicked="OnDeleteClicked" HorizontalOptions="EndAndExpand" Margin="0,0,-20,0"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
